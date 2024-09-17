@@ -1027,9 +1027,9 @@ MonoBehaviour:
   fireworksParticle: {fileID: 66121944}
   moneySound: {fileID: 8300000, guid: af9f934eb4288464eb120a5857921cc3, type: 3}
   explodeSound: {fileID: 8300000, guid: 774ebc5c074ce4695b7cc310fbd44087, type: 3}
-  bounceSound: {fileID: 0}
-  maxHeight: 13
-  bounceForce: 5
+  bounceSound: {fileID: 8300000, guid: ccb9b31174a3a43709a113a9c7cf4252, type: 3}
+  maxHeight: 15
+  bounceForce: 8
 --- !u!1001 &2097113909
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1292,7 +1292,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 29767.125
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0

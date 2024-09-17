@@ -40,15 +40,23 @@ public class PlayerControllerX : MonoBehaviour
         // Check if the player is below the maxHeight limit
         isLowEnough = transform.position.y < maxHeight;
 
-        // While space is pressed and player is low enough, float up
-        if (Input.GetKey(KeyCode.Space) && !gameOver && isLowEnough)
+        // On space key press, apply an upward impulse force to push the player up
+        if (Input.GetKeyDown(KeyCode.Space) && !gameOver && isLowEnough)
         {
-            Debug.Log("Space key pressed and player is low enough"); // Debug log to check key press
-            playerRb.AddForce(Vector3.up * floatForce,ForceMode.Impulse);
+            playerRb.AddForce(Vector3.up * floatForce, ForceMode.Impulse);
         }
-        else if (transform.position.y >= maxHeight)
+
+        // If the player is above maxHeight, clamp the player's position and limit the upward velocity
+        if (transform.position.y >= maxHeight)
         {
-            Debug.Log("Player is too high to float further");
+            // Clamp the player's position so they cannot exceed maxHeight
+            transform.position = new Vector3(transform.position.x, maxHeight, transform.position.z);
+
+            // Nullify upward velocity to prevent floating beyond maxHeight
+            if (playerRb.velocity.y > 0)
+            {
+                playerRb.velocity = new Vector3(playerRb.velocity.x, 0, playerRb.velocity.z);
+            }
         }
     }
 
